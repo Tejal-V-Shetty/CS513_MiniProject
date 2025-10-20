@@ -39,7 +39,7 @@ class Controller:
         epsilon = 0.1
         # Do your magic...
         factor = 10
-        safety_lim = ego_velocity*factor/2  #Modify limit to start braking based on speed of car
+        safety_lim = (ego_velocity/desired_speed)*factor/4  #Modify limit to start braking based on speed of car
         if dist_to_lead<safety_lim*self.distance_threshold:   #Brake if close to lead car
             accel_val = -5.0 * (safety_lim * self.distance_threshold - dist_to_lead) / self.distance_threshold
             mode_val = Mode.FOLLOWING
